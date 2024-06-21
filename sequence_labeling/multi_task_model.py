@@ -35,7 +35,7 @@ class MultiTaskModel(nn.Module):
         '''
         super().__init__()
         self._task_weights = task_weights
-        self.encoder = AutoModel.from_pretrained(encoder_name_or_path)
+        self.encoder = AutoModel.from_pretrained(encoder_name_or_path, ignore_mismatched_sizes=True)
         self._deberta = 'deberta' in encoder_name_or_path.lower()
         self.output_heads = nn.ModuleDict()
         for task in tasks:

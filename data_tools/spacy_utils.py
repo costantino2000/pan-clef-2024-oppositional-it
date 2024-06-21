@@ -5,6 +5,7 @@ from data_tools.spacy_url_tokenization import SpacyURLTokenizer, customize_spacy
 
 DEFAULT_ES_MODEL = 'es_core_news_sm'
 DEFAULT_EN_MODEL = 'en_core_web_sm'
+DEFAULT_IT_MODEL = 'it_core_news_sm'
 
 # names of the extension properties for spacy docs and spans
 ON_DOC_EXTENSION = 'opn_spans' # doc._.opn_spans
@@ -36,6 +37,7 @@ def print_doc_extensions(doc):
 def create_spacy_model(lang, fast=False, url_tokenizer=False):
     if lang == 'en': model = DEFAULT_EN_MODEL
     elif lang == 'es': model = DEFAULT_ES_MODEL
+    elif lang == 'it': model = DEFAULT_IT_MODEL
     else: raise ValueError(f'lang {lang} not supported')
     nlp = spacy.load(model) if not fast else spacy.load(model, disable=['ner', 'parser'])
     customize_spacy_tokenizer(nlp)

@@ -6,6 +6,8 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import StratifiedKFold
 
+import sys, os      # fix for python import:
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from classif_experim.classif_utils import classif_scores
 from classif_experim.hf_skelarn_wrapper import SklearnTransformerClassif
 from data_tools.dataset_loaders import load_dataset_classification

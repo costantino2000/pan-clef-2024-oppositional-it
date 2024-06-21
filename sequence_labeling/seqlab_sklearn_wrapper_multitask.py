@@ -135,7 +135,7 @@ class OppSequenceLabelerMultitask(SklearnTransformerBase):
         return datasets
 
     def _init_tokenizer(self):
-        self.tokenizer = AutoTokenizer.from_pretrained(self._hf_model_label)
+        self.tokenizer = AutoTokenizer.from_pretrained(self._hf_model_label, ignore_mismatched_sizes=True)
         if isinstance(self.tokenizer, transformers.RobertaTokenizerFast):
             self.tokenizer.add_prefix_space = True
         self.tokenizer_params = {'truncation': True}

@@ -191,11 +191,11 @@ class SklearnTransformerClassif(SklearnTransformerBase):
         :return:
         '''
         # load and init tokenizer
-        self.tokenizer = AutoTokenizer.from_pretrained(self._hf_model_label)
+        self.tokenizer = AutoTokenizer.from_pretrained(self._hf_model_label, ignore_mismatched_sizes=True)
         self._init_tokenizer_params()
         # load model
         self.model = AutoModelForSequenceClassification.from_pretrained(
-                        self._hf_model_label, num_labels=num_classes).to(self._device)
+                        self._hf_model_label, num_labels=num_classes, ignore_mismatched_sizes=True).to(self._device)
 
     def set_string_labels(self, labels: List[str]):
         ''' Set 1-1 mapping between string labels and corresponding integer indices.
@@ -310,10 +310,10 @@ class SklearnTransformerClassif(SklearnTransformerBase):
         # load tokenizer and model
         # TODO move tokenizer loading to superclass?
         #tokenizer_path = os.path.join(input_dir, 'tokenizer_config.json')
-        instance.tokenizer = AutoTokenizer.from_pretrained(input_dir)
+        instance.tokenizer = AutoTokenizer.from_pretrained(input_dir, ignore_mismatched_sizes=True)
         model_path = os.path.join(input_dir, 'pytorch_model.bin')
         if device is None: device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-        instance.model = AutoModelForSequenceClassification.from_pretrained(input_dir).to(device)
+        instance.model = AutoModelForSequenceClassification.from_pretrained(input_dir, ignore_mismatched_sizes=True).to(device)
         return instance
 
 
