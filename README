@@ -4,6 +4,8 @@ https://pan.webis.de/clef24/pan24-web/oppositional-thinking-analysis.html
 The code is licensed under the APACHE 2.0 license, see LICENSE file.
 The exception is the span_f1_metric.py file, which is licensed under the GPL license, see the file for details.
 
+This fork adds support for the italian language, using the "nlptown/bert-base-multilingual-uncased-sentiment" model by default.
+
 This document contains the high-level overview of the code,
 and the instructions to setup the environment for the project.
 
