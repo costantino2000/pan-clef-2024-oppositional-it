@@ -4,6 +4,8 @@ from typing import List, Dict
 
 from sklearn.metrics import f1_score, matthews_corrcoef
 
+import sys, os      # fix for python import
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sequence_labeling.span_f1_metric import compute_score_pr
 
 SPAN_EMPTY_LABEL = 'X'

@@ -5,7 +5,7 @@ import pandas as pd
 
 from data_tools.dataset_utils import reconstruct_spacy_docs_from_json, BINARY_MAPPING_CONSPIRACY_POS, \
     BINARY_MAPPING_CRITICAL_POS, span_annot_to_spanf1_format, validate_json_annotations, is_empty_annot
-from settings import TRAIN_DATASET_EN, TRAIN_DATASET_ES, TEST_DATASET_EN
+from settings import TRAIN_DATASET_EN, TRAIN_DATASET_ES, TEST_DATASET_EN, TRAIN_DATASET_IT
 
 
 def load_dataset_full(lang, format='docbin'):
@@ -17,6 +17,7 @@ def load_dataset_full(lang, format='docbin'):
     print(f'Loading official JSON {lang} dataset')
     if lang == 'en': fname = TRAIN_DATASET_EN
     elif lang == 'es': fname = TRAIN_DATASET_ES
+    elif lang == 'it': fname = TRAIN_DATASET_IT
     else: raise ValueError(f'Unknown language: {lang}')
     if format == 'docbin':
         dataset = reconstruct_spacy_docs_from_json(fname, lang)
